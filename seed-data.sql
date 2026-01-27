@@ -1,0 +1,17 @@
+-- seed-data.sql
+INSERT INTO feedback (source, content, author, created_at, sentiment, themes, urgency, analyzed) VALUES
+('GitHub Issue #234', 'The dashboard is extremely slow to load on mobile devices. Takes over 10 seconds. This is blocking our mobile users.', 'user_sarah', '2025-01-20T14:30:00Z', 'negative', 'performance,mobile', 'high', 1),
+('Discord', 'Love the new API! However, the documentation for webhooks is pretty confusing. Took me 3 hours to figure out the authentication.', 'dev_mike', '2025-01-21T09:15:00Z', 'mixed', 'documentation,api', 'medium', 1),
+('Support Ticket #1891', 'We are experiencing frequent 504 timeout errors on the /api/data endpoint during peak hours. Affecting production.', 'enterprise_customer', '2025-01-21T16:45:00Z', 'negative', 'performance,api,reliability', 'critical', 1),
+('Twitter', 'Just upgraded to Pro plan. The new analytics dashboard is fantastic! Really helps us understand our usage patterns.', '@happy_user', '2025-01-22T11:20:00Z', 'positive', 'analytics,pricing', 'low', 1),
+('GitHub Issue #245', 'Feature request: Please add dark mode to the dashboard. My eyes hurt after long sessions.', 'user_alex', '2025-01-22T13:00:00Z', 'neutral', 'feature-request,ui', 'low', 1),
+('Discord', 'The pricing page is confusing. Not clear what the difference is between Pro and Enterprise. Almost didn''t upgrade because of this.', 'potential_customer', '2025-01-23T08:30:00Z', 'negative', 'pricing,documentation', 'medium', 1),
+('Support Ticket #1923', 'Getting CORS errors when trying to use the API from our frontend. Documentation doesn''t mention how to configure this.', 'dev_team', '2025-01-23T10:45:00Z', 'negative', 'api,documentation', 'high', 1),
+('GitHub Issue #251', 'Excellent job on the new onboarding flow! Much clearer than before. Got set up in under 5 minutes.', 'new_user', '2025-01-24T15:00:00Z', 'positive', 'onboarding,documentation', 'low', 1),
+('Email', 'The export feature is broken. When I try to export data as CSV, I get a 500 error. Need this fixed ASAP for our quarterly report.', 'client_data_team', '2025-01-24T17:20:00Z', 'negative', 'export,bug', 'critical', 1),
+('Discord', 'Quick question: is there a rate limit on the API? Can''t find this info anywhere in the docs.', 'developer', '2025-01-25T09:00:00Z', 'neutral', 'documentation,api', 'medium', 1),
+('Twitter', 'Your customer support is amazing! Responded to my issue in under 30 minutes. This is how support should be done.', '@satisfied_user', '2025-01-25T12:30:00Z', 'positive', 'support', 'low', 1),
+('GitHub Issue #267', 'The search functionality in the dashboard doesn''t work with special characters. Keeps returning empty results.', 'user_james', '2025-01-26T10:15:00Z', 'negative', 'search,bug', 'medium', 1),
+('Support Ticket #1945', 'We need SSO integration for enterprise. This is a blocker for our deployment. When can we expect this?', 'enterprise_security', '2025-01-26T14:00:00Z', 'neutral', 'feature-request,security,enterprise', 'high', 1),
+('Discord', 'The mobile app keeps crashing when I try to view analytics. iPhone 15 Pro, iOS 17.2.', 'mobile_user', '2025-01-27T08:45:00Z', 'negative', 'mobile,bug,analytics', 'high', 1),
+('Email', 'Billing question: why was I charged twice this month? Need clarification on the invoice.', 'confused_customer', '2025-01-27T11:00:00Z', 'negative', 'billing,pricing', 'medium', 1);
