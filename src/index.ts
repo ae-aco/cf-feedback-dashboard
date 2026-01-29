@@ -285,6 +285,7 @@ function renderDashboard(feedback: FeedbackItem[]): string {
 	</div>
 
 	<script>
+		let insightsData = null;
 		let insightsExpanded = {};
 
 		async function loadInsights() {
@@ -294,37 +295,53 @@ function renderDashboard(feedback: FeedbackItem[]): string {
 			
 			try {
 				const response = await fetch('/api/insights', { method: 'POST' });
-				const data = await response.json();
-				
-				const createExpandableSection = (id, title, content) => {
-					const isLong = content.length > 300;
-					const truncated = isLong ? content.substring(0, 300) + '...' : content;
-					const expanded = insightsExpanded[id] || false;
-					
-					return \`
-						<div class="bg-white/10 rounded-lg p-4">
-							<h3 class="font-semibold text-base sm:text-lg mb-2">\${title}</h3>
-							<div id="\${id}-content" class="text-white/90 whitespace-pre-wrap break-words text-sm sm:text-base">\${expanded ? content : truncated}</div>
-							\${isLong ? \`<button onclick="toggleInsight('\${id}', \${!expanded})" class="mt-2 text-white/80 hover:text-white text-sm underline">\${expanded ? 'Read Less' : 'Read More'}</button>\` : ''}
-						</div>
-					\`;
-				};
-				
-				container.innerHTML = \`
-					\${createExpandableSection('sentiment', '📊 Overall Sentiment Trend', data.sentimentTrend)}
-					\${createExpandableSection('themes', '🔍 Top 5 Recurring Themes', data.themes)}
-					\${createExpandableSection('actions', '✅ Recommended Priority Actions', data.actions)}
-				\`;
-				
+				insightsData = await response.json();
+				renderInsights();
 				refreshBtn.classList.remove('hidden');
 			} catch (error) {
 				container.innerHTML = '<div class="text-white">Error loading insights. Please try again.</div>';
 			}
 		}
 
-		function toggleInsight(id, expand) {
-			insightsExpanded[id] = expand;
-			loadInsights();
+		function renderInsights() {
+			if (!insightsData) return;
+			
+			const container = document.getElementById('ai-insights-content');
+			
+			const createExpandableSection = (id, title, content) => {
+				const isLong = content.length > 300;
+				const expanded = insightsExpanded[id] || false;
+				
+				return \`
+					<div class="bg-white/10 rounded-lg p-4">
+						<h3 class="font-semibold text-base sm:text-lg mb-2">\${title}</h3>
+						<div id="\${id}-content" class="text-white/90 whitespace-pre-wrap break-words text-sm sm:text-base overflow-hidden transition-all duration-300" style="max-height: \${expanded ? 'none' : '120px'}">
+							\${content}
+						</div>
+						\${isLong ? \`<button onclick="toggleInsight('\${id}')" class="mt-2 text-white/80 hover:text-white text-sm underline">\${expanded ? 'Read Less' : 'Read More'}</button>\` : ''}
+					</div>
+				\`;
+			};
+			
+			container.innerHTML = \`
+				\${createExpandableSection('sentiment', '📊 Overall Sentiment Trend', insightsData.sentimentTrend)}
+				\${createExpandableSection('themes', '🔍 Top 5 Recurring Themes', insightsData.themes)}
+				\${createExpandableSection('actions', '✅ Recommended Priority Actions', insightsData.actions)}
+			\`;
+		}
+
+		function toggleInsight(id) {
+			insightsExpanded[id] = !insightsExpanded[id];
+			const contentDiv = document.getElementById(id + '-content');
+			const button = contentDiv.nextElementSibling;
+			
+			if (insightsExpanded[id]) {
+				contentDiv.style.maxHeight = 'none';
+				if (button) button.textContent = 'Read Less';
+			} else {
+				contentDiv.style.maxHeight = '120px';
+				if (button) button.textContent = 'Read More';
+			}
 		}
 
 		async function askQuestion(predefinedQuestion) {
