@@ -1,20 +1,22 @@
 # Friction Log
 
-**Title:** Successful Deployment Feedback
+### Successful Deployment Feedback
 
 **Problem:** When I ran `npx wrangler deploy` it happened very smoothly and I wasn't sure what I needed to do next. I expected to create a custom URL, instead I was allocated a url automatically. The speed of deployment is a good thing, but the lack of feedback to confirm that it was successful made me second-guess if it had worked properly. I had to navigate to the dashboard to confirm the deployment was live.
 
 **Suggestion:** Improve the success message with "Deployment successful" or even "Done". A prompt to the next steps such as "Test your URL" or "Visit the dashboard to configure settings".
 <br>
+<br>
 
-**Title:** Clarity on Database Error Messages 
+### Clarity on Database Error Messages 
 
 **Problem:** When running the schema setup D1 `npx wrangler d1 execute feedback-db --remote --file=./schema.sql`, I received the error message: " x ERROR index idx_source already exists: SQLITE_ERROR". I was unsure if I should investigate if there was an issue with my database, was it corrupted, did I need to drop and recreate the database? I had to seek assistance to understand this issue
 
 **Suggestion:** Perhaps change the word from "Error" to "Warning", it's helpful to know that the database already exists, it should say that it's "Ready to use" so that I don't assume that something is broken. Or change the colour of the error label to orange so that the user understands the severity level of the error. In addition to this, add to the documentation that re-running schema files is common.
 <br>
+<br>
 
-**Title:** Workers & Pages Dashboard 
+### Workers & Pages Dashboard 
 
 **Problem:** n/a, this is positive feedback!
 
