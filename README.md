@@ -23,7 +23,7 @@ This project explores and demonstrates how product feedback from multiple source
 
 ## Architecture 
 
-![Cloudflare Bindings Diagram](submission/screenshots/bindings.png)
+![Cloudflare Bindings Diagram](submission/screenshots/workers_binding_page.png)
 
 ## Demo
 
@@ -65,7 +65,7 @@ npx wrangler deploy
 
 Your app will be live at `https://cf-feedback-dashboard.YOUR-ACCOUNT.workers.dev`
 
-**Time spent**: ~4 hours (1 hour learning, 2 hours building, 1 hour documenting)
+**Time spent**: 4 hours (1 hour learning, 2 hours building, 1 hour documenting)
 
 ## What I Learned
 
