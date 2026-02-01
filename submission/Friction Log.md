@@ -20,7 +20,7 @@
 
 **Problem:** n/a, this is positive feedback!
 
-**Observation**: As a new user exploring the Workers & Pages dashboard, I found the UI easy to navigate, intuitive and clean. I found it easy to locate key information metrics, deployments, bindings, settings etc. II appreciated that these sections can be found in top level navigation rather than nested in the sidebar menu. This makes key information immediately accessible. 
+**Observation**: As a new user exploring the Workers & Pages dashboard, I found the UI easy to navigate, intuitive and clean. I found it easy to locate key information metrics, deployments, bindings, settings etc. I appreciated that these sections can be found in top level navigation rather than nested in the sidebar menu. This makes key information immediately accessible. 
 
 The `recents` section in the navigation menu on the left is useful as a new user finding their way around the dashboard. Having access to this feature, saves time and reduces the frustration of trying to remember where I found something earlier. 
 
